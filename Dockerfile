@@ -14,7 +14,7 @@ RUN dnf install -y procps which hostname sshpass siege jq python3-pip wget git &
 RUN wget -nv -O - https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz \
     | tar -C /usr/local/bin -xz
 
-RUN curl -L https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64 -o /usr/local/bin/odo
+RUN curl -sS -L https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64 -o /usr/local/bin/odo
 RUN chmod +x /usr/local/bin/odo
 
 RUN mkdir -p ${APP_ROOT} && \
