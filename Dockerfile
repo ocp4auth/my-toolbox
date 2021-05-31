@@ -9,7 +9,7 @@ ENV \
 
 RUN dnf update -y && dnf clean all -y
 RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && dnf clean all -y
-RUN dnf install -y procps which hostname sshpass siege jq python3-pip wget && dnf clean all -y
+RUN dnf install -y procps which hostname sshpass siege jq python3-pip wget git && dnf clean all -y
 
 RUN wget -nv -O - https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz \
     | tar -C /usr/local/bin -xz
