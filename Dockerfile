@@ -23,4 +23,13 @@ RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
 RUN pip3 install --upgrade pip
 RUN pip3 install ansible
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        g++ \
+        ca-certificates \
+        wget && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN wget -nv -O - https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz \
+    | tar -C /usr/local/bin -xz
+
 USER 1001
