@@ -26,7 +26,17 @@ RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
     -c "Default Application User" default && \
     chown -R 1001:0 ${APP_ROOT}
 
+RUN groupadd -g 1000 developer && \
+    useradd  -g      developer -G sudo -m -s /bin/bash devuser && \
+    echo 'devuser:2wsx!cde8' | chpasswd
+
+RUN echo 'Defaults visiblepw'             >> /etc/sudoers
+RUN echo 'devuser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+
+
 RUN pip3 install --upgrade pip
 RUN pip3 install ansible
 
 #USER 1001
+USER devuser
