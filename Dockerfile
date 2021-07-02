@@ -27,7 +27,7 @@ RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
     chown -R 1001:0 ${APP_ROOT}
 
 RUN groupadd -g 1000 developer && \
-    useradd  -g      developer -G sudo -m -s /bin/bash devuser && \
+    useradd  -g      developer -m -s /bin/bash devuser && \
     echo 'devuser:2wsx!cde8' | chpasswd
 
 RUN echo 'Defaults visiblepw'             >> /etc/sudoers
